@@ -15,3 +15,16 @@ TEST(FSMGeneratorExceptionTests, CanBeCaught)
 	
 	ASSERT_EQ(true, exceptionCaught);
 }
+
+TEST(FSMGeneratorExceptionTests, CharConstErrorMessage)
+{
+	const char * testString = "Test String";
+	try
+	{
+		throw FSMGeneratorException(testString);
+	}
+	catch (const FSMGeneratorException & err)
+	{
+		EXPECT_EQ(0, strcmp(testString, err.what()));
+	}
+}

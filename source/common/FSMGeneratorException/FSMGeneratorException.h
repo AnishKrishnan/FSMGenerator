@@ -6,7 +6,10 @@
 class FSMGeneratorException : public std::runtime_error
 {
 public:
+
 	FSMGeneratorException();
+
+	FSMGeneratorException(const char * pMessage);
 };
 
 #endif //FSMGeneratorException_H

@@ -30,6 +30,7 @@ endif()
 
 # Libraries can be added to the LIBS variable
 # or manually included here.
+include(source.cmake)
 
 ##### Files #####
 

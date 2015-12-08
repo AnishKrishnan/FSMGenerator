@@ -39,6 +39,7 @@ endif()
 # or manually included here.
 
 include(${BASE_LOCATION}/tests/tests.cmake)
+include(${PROJECT_SOURCE_DIR}/../source.cmake)
 
 ##### Files #####
 

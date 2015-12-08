@@ -57,5 +57,10 @@ set(SOURCES
 add_executable(${TARGET} ${SOURCES})
 target_link_libraries(${TARGET} ${LIBS} ${GTEST_LIBRARIES} pthread)
 
+add_custom_target(run
+	COMMAND runTests
+	DEPENDS runTests
+	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+
 ##### Post build #####
 

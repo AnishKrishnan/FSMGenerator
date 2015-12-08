@@ -1,3 +1,7 @@
+/**
+ * Custom exception class to use for the FSMGenerator Project
+ */
+
 #ifndef FSMGeneratorException_H
 #define FSMGeneratorException_H
 

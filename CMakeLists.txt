@@ -48,5 +48,13 @@ set(SOURCES
 add_executable(${TARGET} ${SOURCES})
 target_link_libraries(${TARGET} ${LIBS})
 
+message(${PROJECT_SOURCE_DIR})
+
+add_custom_target(docs
+	COMMAND doxygen Doxyfile.in
+	WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+)
+
+
 ##### Post build #####
 

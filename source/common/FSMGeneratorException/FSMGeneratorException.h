@@ -7,9 +7,18 @@ class FSMGeneratorException : public std::runtime_error
 {
 public:
 
+	/**
+	 * @brief Constructor for FSMGeneratorException
+	 * @details Default constructor which results in empty message
+	 */
 	FSMGeneratorException();
 
-	FSMGeneratorException(const char * pMessage);
+	/**
+	 * @brief Constructor for FSMGeneratorException with const char message
+	 * 
+	 * @param pMessage Exception message
+	 */
+	explicit FSMGeneratorException(const char * pMessage);
 };
 
 #endif //FSMGeneratorException_H

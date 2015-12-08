@@ -28,3 +28,16 @@ TEST(FSMGeneratorExceptionTests, CharConstErrorMessage)
 		EXPECT_EQ(0, strcmp(testString, err.what()));
 	}
 }
+
+TEST(FSMGeneratorExceptionTests, StdStringErrorMessage)
+{
+	const std::string testString("Test String");
+	try
+	{
+		throw FSMGeneratorException(testString);
+	} 
+	catch (const FSMGeneratorException & err)
+	{
+		EXPECT_EQ(0, testString.compare(err.what()));
+	}
+}

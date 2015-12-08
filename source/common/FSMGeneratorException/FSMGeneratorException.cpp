@@ -9,3 +9,8 @@ FSMGeneratorException::FSMGeneratorException(const char * pMessage)
 	: std::runtime_error(pMessage)
 {
 }
+
+FSMGeneratorException::FSMGeneratorException(const std::string & pMessage)
+	: std::runtime_error(pMessage)
+{
+}

@@ -19,6 +19,13 @@ public:
 	 * @param pMessage Exception message
 	 */
 	explicit FSMGeneratorException(const char * pMessage);
+
+	/**
+	 * @brief Constructor for FSMGeneratorException with std::string message
+	 * 
+	 * @param pMessage Exception Message
+	 */
+	explicit FSMGeneratorException(const std::string & pMessage);
 };
 
 #endif //FSMGeneratorException_H

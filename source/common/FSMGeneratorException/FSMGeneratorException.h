@@ -1,4 +1,5 @@
-/**
+/** \addtogroup Common
+ *  @{
  * Custom exception class to use for the FSMGenerator Project
  */
 
@@ -33,3 +34,4 @@ public:
 };
 
 #endif //FSMGeneratorException_H
+/** @}*/

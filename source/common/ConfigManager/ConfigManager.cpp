@@ -20,7 +20,7 @@ ConfigManager * ConfigManager::GetInstance(const char * pFile)
 	return _instance;
 }
 
-/** private methods **/
+/** private methodNs **/
 ConfigManager::ConfigManager(const char * pFile)
 {
 	if (pFile == NULL)
@@ -31,10 +31,52 @@ ConfigManager::ConfigManager(const char * pFile)
 	std::stringstream buffer;
 	
 	std::ifstream file(pFile);
+	if (!file.is_open())
+	{
+		throw std::runtime_error("Could not open the file provided");
+	}
+
 	buffer << file.rdbuf();
 	file.close();
 
 	_configText = std::string(buffer.str());
 
 	_doc.parse<0>(&_configText[0]);
+
+	_root = _doc.first_node();
+	if (_root == NULL)
+	{
+		throw std::runtime_error("config file does not contain a root node");
+	}
+}
+
+std::string ConfigManager::GetConfigValue(const char * pConfigItemName)
+{
+	if (pConfigItemName == NULL)
+	{
+		throw std::runtime_error("ConfigManager::GetConfigValue - pConfigItemName is null");
+	}
+
+
+	rapidxml::xml_node<> * node = _root->first_node("configGroup");
+
+	if (node == NULL)
+	{
+		throw std::runtime_error("config file must have at least one configGroup tag");
+	}
+
+	rapidxml::xml_node<> * desiredNode = NULL;
+	do
+	{
+		desiredNode = node->first_node(pConfigItemName);
+		if (desiredNode == NULL)
+		{
+			continue;
+		}
+		
+		return desiredNode->value();
+	}
+	while((node = node->next_sibling()));
+
+	throw std::runtime_error("could not find a config item with the provided tag name");
 }

@@ -19,6 +19,7 @@ class ConfigManager
 private:
 	static ConfigManager * _instance;
 	rapidxml::xml_document<> _doc;
+	rapidxml::xml_node<> * _root;
 	std::string _configText;
 
 	/**
@@ -35,6 +36,14 @@ public:
 	 * @return pointer to the instance of the config manager
 	 */
 	static ConfigManager * GetInstance (const char * pFile);
+
+	/**
+	 * @brief Returns the value stored in the configItem tag with the given tag
+	 * 
+	 * @param pConfigItemName string indicating the name of the configItem
+	 * @return string representing the value in the config file
+	 */
+	std::string GetConfigValue (const char * pConfigItemName);
 
 };
 

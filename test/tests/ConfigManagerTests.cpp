@@ -1,5 +1,7 @@
 #include "ConfigManager.h"
 #include <gtest/gtest.h>
+#include "unistd.h"
+#include "iostream"
 
 class ConfigManagerTests : public::testing::Test
 {
@@ -8,11 +10,11 @@ public:
 
 	ConfigManagerTests()
 	{
-		configManager = ConfigManager::GetInstance("../data/ConfigManagerTestsData/testConfig.config");
 	}
 
 	void SetUp()
 	{
+		configManager = ConfigManager::GetInstance("../data/ConfigManagerTestData/testConfig.config");
 	}
 
 	void TearDown()
@@ -24,7 +26,11 @@ public:
 	}
 };
 
-TEST_F(ConfigManagerTests, random)
+TEST_F(ConfigManagerTests, GetItemSimple)
 {
-	EXPECT_EQ(1,1);
+	std::string expectedData("value1");
+
+	std::string actualData = configManager->GetConfigValue("configItem1");
+
+	EXPECT_EQ(0, expectedData.compare(actualData));
 }

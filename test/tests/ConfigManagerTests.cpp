@@ -8,7 +8,7 @@ public:
 
 	ConfigManagerTests()
 	{
-		configManager = ConfigManager::GetInstance();
+		configManager = ConfigManager::GetInstance("../data/ConfigManagerTestsData/testConfig.config");
 	}
 
 	void SetUp()

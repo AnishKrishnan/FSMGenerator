@@ -7,24 +7,34 @@
 #define ConfigManager_H
 
 #include "stddef.h"
+#include "stdexcept"
+#include "string"
+#include "sstream"
+#include "fstream"
+#include "rapidxml.hpp"
 
 class ConfigManager
 {
 
 private:
 	static ConfigManager * _instance;
+	rapidxml::xml_document<> _doc;
+	std::string _configText;
 
 	/**
 	 * @brief Private constructor 
-	 * @details [long description]
+	 * @param pFile string specifying the config file to use
 	 */
-	ConfigManager ();
+	ConfigManager (const char * pFile);
 public:
 
 	/**
 	 * @brief Returns the singleton instancce of the config manager
+	 * @param pFile string specifying the config file to use
+	 * 
+	 * @return pointer to the instance of the config manager
 	 */
-	static ConfigManager * GetInstance ();
+	static ConfigManager * GetInstance (const char * pFile);
 
 };
 

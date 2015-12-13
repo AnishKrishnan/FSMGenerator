@@ -35,6 +35,22 @@ TEST_F(ConfigManagerTests, GetItemSimple)
 	EXPECT_EQ(0, expectedData.compare(actualData));
 }
 
+TEST_F(ConfigManagerTests, GetItemSimpleIncorrectKey)
+{
+	bool exceptionThrown = false;
+
+	try
+	{
+		(void)configManager->GetConfigValue("abcdefg");
+	}
+	catch(const std::runtime_error& err)
+	{
+		exceptionThrown = true;
+	}
+
+	EXPECT_EQ(true, exceptionThrown);
+}
+
 TEST_F(ConfigManagerTests, GetItemAsInt)
 {
 	int expectedData = 42;

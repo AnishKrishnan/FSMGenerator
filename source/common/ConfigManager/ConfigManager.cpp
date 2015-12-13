@@ -80,3 +80,15 @@ std::string ConfigManager::GetConfigValue(const char * pConfigItemName)
 
 	throw std::runtime_error("could not find a config item with the provided tag name");
 }
+
+int ConfigManager::GetConfigValueAsInt(const char * pConfigItemName)
+{
+	if (pConfigItemName == NULL)
+	{
+		throw std::runtime_error("ConfigManager::GetConfigValueAsInt - pConfigItemName is null");
+	}
+
+	std::string configValue = this->GetConfigValue(pConfigItemName);
+
+	return atoi(configValue.c_str());
+}

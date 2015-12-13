@@ -45,6 +45,14 @@ public:
 	 */
 	std::string GetConfigValue (const char * pConfigItemName);
 
+	/**
+	 * @brief Returns the value stored in the configItem tag as an int
+	 * 
+	 * @param pConfigItemName string indicating the name of the configItem
+	 * @return value of the config item as an int
+	 */
+	int GetConfigValueAsInt (const char * pConfigItemName);
+
 };
 
 #endif //ConfigManager_H

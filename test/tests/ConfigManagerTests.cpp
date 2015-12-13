@@ -34,3 +34,12 @@ TEST_F(ConfigManagerTests, GetItemSimple)
 
 	EXPECT_EQ(0, expectedData.compare(actualData));
 }
+
+TEST_F(ConfigManagerTests, GetItemAsInt)
+{
+	int expectedData = 42;
+
+	int actualData = configManager->GetConfigValueAsInt("configItem2");
+
+	EXPECT_EQ(expectedData, actualData);
+}

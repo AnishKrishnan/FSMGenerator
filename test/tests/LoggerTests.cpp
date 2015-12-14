@@ -1,4 +1,3 @@
-#include "ConfigManager.h"
 #include "Logger.h"
 #include <gtest/gtest.h>
 #include "unistd.h"
@@ -7,7 +6,6 @@
 class LoggerTests : public::testing::Test
 {
 public:
-	ConfigManager * configManager;
 
 	Logger * logger;
 
@@ -17,8 +15,7 @@ public:
 
 	void SetUp()
 	{
-		configManager = ConfigManager::GetInstance("../data/ConfigManagerTestData/testConfig.config");
-		logger = Logger::GetInstance(configManager);
+		logger = Logger::GetInstance("../logs/", true);
 	}
 
 	void TearDown()

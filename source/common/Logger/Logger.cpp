@@ -5,28 +5,29 @@ Logger * Logger::_instance = NULL;
 
 /** public methods **/
 
-Logger * Logger::GetInstance(ConfigManager * pConfigManager)
+Logger * Logger::GetInstance(const char * pFilePath, bool pTrace)
 {
-	if (pConfigManager == NULL)
+	if (pFilePath == NULL)
 	{
 		throw std::runtime_error("Logger::GetInstance - pConfigManager is null");
 	}
 
 	if (Logger::_instance == NULL)
 	{
-		_instance = new Logger(pConfigManager);
+		_instance = new Logger(pFilePath, pTrace);
 	}
 
 	return _instance;
 }
 
 /** private methodNs **/
-Logger::Logger(ConfigManager * pConfigManager)
+Logger::Logger(const char * pFilePath, bool pTrace)
 {
-	if (pConfigManager == NULL)
+	if (pFilePath == NULL)
 	{
 		throw std::runtime_error("Logger::ctor - pConfigManager is null");
 	}
 
-	_configManager = pConfigManager;
+	_filePath = std::string(pFilePath);
+	_fullTrace = pTrace;
 }

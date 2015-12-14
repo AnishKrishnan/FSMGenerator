@@ -14,23 +14,26 @@ class Logger
 
 private:
 	static Logger * _instance;
-	ConfigManager * _configManager;
+	std::string _filePath;
+	bool _fullTrace;
 	
 	/**
 	 * @brief Private constructor 
-	 * @param pFile string specifying the config file to use
+	 * @param pFilePath string specifying the path to store the logs
+	 * @param pTrace boolean indicating whether full trace should be enabled
 	 */
-	explicit Logger (ConfigManager * pConfigManager);
+	Logger (const char * pFilePath, bool pTrace = false);
 
 public:
 
 	/**
 	 * @brief Returns the singleton instance of the Logger class
 	 * 
-	 * @param pConfigManager pointer to the config manager object
+	 * @param pFilePath string specifying the path to store the logs
+	 * @param pTrace boolean indicating whether full trace should be enabled
 	 * @return pointer to the logger instance
 	 */
-	static Logger * GetInstance (ConfigManager * pConfigManager);
+	static Logger * GetInstance (const char * pFilePath, bool pTrace);
 };
 
 #endif //Logger_H

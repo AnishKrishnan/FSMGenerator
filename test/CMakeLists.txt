@@ -1,5 +1,4 @@
-# Base EFM32 CMake file
-#
+# Base Test CMake file
 # This can be used as is as a project base, or by adding the efm32-base
 # repository as a submodule to another project, copying this CMakeLists file
 # to the top level directory, and updating the BASE_LOCATION variable to reflect this
@@ -39,6 +38,7 @@ endif()
 # or manually included here.
 
 include(${BASE_LOCATION}/tests/tests.cmake)
+include(${BASE_LOCATION}/mocks/mocks.cmake)
 include(${PROJECT_SOURCE_DIR}/../source.cmake)
 
 ##### Files #####
@@ -56,6 +56,7 @@ set(SOURCES
 
 # Generate executable and link
 add_executable(${TARGET} ${SOURCES})
+# target_link_libraries(${TARGET} ${LIBS} ${GTEST_LIBRARIES} ${GMOCK_LIBRARIES} pthread)
 target_link_libraries(${TARGET} ${LIBS} ${GTEST_LIBRARIES} pthread)
 
 add_custom_target(run

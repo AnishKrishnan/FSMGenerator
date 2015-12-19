@@ -8,32 +8,32 @@
 
 #include "stdexcept"
 #include "ConfigManager.h"
-
+#include "IFileWriter.h"
 class Logger
 {
 
 private:
 	static Logger * _instance;
-	std::string _filePath;
+	IFileWriter * _writer;
 	bool _fullTrace;
 	
 	/**
 	 * @brief Private constructor 
-	 * @param pFilePath string specifying the path to store the logs
+	 * @param pFileWriter file writer interface used to write logs
 	 * @param pTrace boolean indicating whether full trace should be enabled
 	 */
-	Logger (const char * pFilePath, bool pTrace = false);
+	Logger (IFileWriter * pFileWriter, bool pTrace = false);
 
 public:
 
 	/**
 	 * @brief Returns the singleton instance of the Logger class
 	 * 
-	 * @param pFilePath string specifying the path to store the logs
+	 * @param pFileWriter file writer interface used to write logs
 	 * @param pTrace boolean indicating whether full trace should be enabled
 	 * @return pointer to the logger instance
 	 */
-	static Logger * GetInstance (const char * pFilePath, bool pTrace);
+	static Logger * GetInstance (IFileWriter * pFileWriter, bool pTrace = false);
 };
 
 #endif //Logger_H

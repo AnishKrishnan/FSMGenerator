@@ -50,6 +50,10 @@ void Logger::Log(LogLevel pLogLevel, const char * pLogData)
 	{
 		case LOGLEVEL_INFO:
 			logLevelString = "INFO";
+			break;
+		case LOGLEVEL_WARNING:
+			logLevelString = "WARNING";
+			break;
 		default:
 			break;
 	};

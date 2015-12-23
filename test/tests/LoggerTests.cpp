@@ -36,9 +36,9 @@ TEST_F(LoggerTests, LogInfoTest)
 	logger->Log(LOGLEVEL_INFO, "Test String");
 }
 
-// TEST_F(LoggerTests, test)
-// {
-// 	MockFileWriter mock;
-// 	const char * stuff = "Stuff";
-// 	EXPECT_CALL(mock, Write(stuff)).Times(1);
-// }
+TEST_F(LoggerTests, LogWarningTest)
+{
+	EXPECT_CALL(mockFileWriter, WriteLine(std::string("WARNING: Test String")))
+		.Times(1);
+	logger->Log(LOGLEVEL_WARNING, "Test String");
+}

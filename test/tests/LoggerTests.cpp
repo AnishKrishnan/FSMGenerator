@@ -42,3 +42,11 @@ TEST_F(LoggerTests, LogWarningTest)
 		.Times(1);
 	logger->Log(LOGLEVEL_WARNING, "Test String");
 }
+
+TEST_F(LoggerTests, LogErrorTest)
+{
+	EXPECT_CALL(mockFileWriter, WriteLine(std::string("ERROR: Test String")))
+		.Times(1);
+	logger->Log(LOGLEVEL_ERROR, "Test String");
+}
+

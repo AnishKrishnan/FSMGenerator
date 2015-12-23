@@ -50,3 +50,11 @@ TEST_F(LoggerTests, LogErrorTest)
 	logger->Log(LOGLEVEL_ERROR, "Test String");
 }
 
+TEST_F(LoggerTests, LogFormattedString)
+{
+	EXPECT_CALL(mockFileWriter, WriteLine(std::string("INFO: Test Formatted")))
+		.Times(1);
+
+	logger->Log(LOGLEVEL_INFO, "Test %s", "Formatted");
+}
+

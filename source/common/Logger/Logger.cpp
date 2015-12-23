@@ -1,7 +1,9 @@
 #include "Logger.h"
 
-// Initialising static instance pointer
+// Initialising static variables
 Logger * Logger::_instance = NULL;
+int Logger::MAX_LOG_BUFFER_SIZE = 1024;
+int Logger::MAX_LOG_SIZE = 1000;
 
 /** public methods **/
 
@@ -57,4 +59,34 @@ void Logger::Log(LogLevel pLogLevel, const std::string& pLogData)
 	};
 
 	_writer->WriteLine(std::string(logLevelString + ": " + pLogData));
+}
+
+void Logger::Log(LogLevel pLogLevel, const char * pLogFormat, ...)
+{
+	if (pLogFormat == NULL)
+	{
+		throw std::runtime_error("Logger::Log - pLogFormat is null");
+	}
+
+	if (pLogLevel < 0 || pLogLevel > LOGLEVEL_COUNT)
+	{
+		throw std::runtime_error("Logger::Log - pLogLevel is out of valid range");
+	}
+
+	if (strlen(pLogFormat) > MAX_LOG_SIZE)
+	{
+		throw std::runtime_error("Logger::Log - pLogFormat is too long");
+	}
+
+	//get variadic data
+	va_list args;
+	va_start(args, pLogFormat);
+
+	char buffer[MAX_LOG_SIZE];
+
+	vsprintf(buffer, pLogFormat, args);
+
+	this->Log(pLogLevel, std::string(buffer));
+
+	va_end(args);
 }

@@ -54,5 +54,5 @@ void Logger::Log(LogLevel pLogLevel, const char * pLogData)
 			break;
 	};
 
-	_writer->WriteLine(std::string(logLevelString + ":" + pLogData));
+	_writer->WriteLine(std::string(logLevelString + ": " + pLogData));
 }

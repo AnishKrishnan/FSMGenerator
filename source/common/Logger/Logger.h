@@ -51,7 +51,7 @@ public:
 	 * @param pLogLevel severity level of the log
 	 * @param pLogData data to log
 	 */
-	void Log (LogLevel pLogLevel, const char * pLogData);
+	void Log (LogLevel pLogLevel, const std::string& pLogData);
 };
 
 #endif //Logger_H

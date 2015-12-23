@@ -20,6 +20,10 @@ enable_testing()
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
+enable_testing()
+find_package(GMock REQUIRED)
+include_directories(${GMOCK_INCLUDE_DIRS})
+
 # Set efm32-base project location
 set(BASE_LOCATION .)
 
@@ -37,6 +41,7 @@ endif()
 # Libraries can be added to the LIBS variable
 # or manually included here.
 
+include(${BASE_LOCATION}/googletest.cmake)
 include(${BASE_LOCATION}/tests/tests.cmake)
 include(${BASE_LOCATION}/mocks/mocks.cmake)
 include(${PROJECT_SOURCE_DIR}/../source.cmake)
@@ -56,8 +61,8 @@ set(SOURCES
 
 # Generate executable and link
 add_executable(${TARGET} ${SOURCES})
-# target_link_libraries(${TARGET} ${LIBS} ${GTEST_LIBRARIES} ${GMOCK_LIBRARIES} pthread)
-target_link_libraries(${TARGET} ${LIBS} ${GTEST_LIBRARIES} pthread)
+target_link_libraries(${TARGET} ${LIBS} ${GTEST_LIBRARIES} ${GMOCK_LIBRARIES} pthread)
+# target_link_libraries(${TARGET} ${LIBS} ${GTEST_LIBRARIES} pthread)
 
 add_custom_target(run
 	COMMAND runTests

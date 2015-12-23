@@ -5,8 +5,6 @@
 #include "unistd.h"
 #include "iostream"
 
-using ::testing::tuple;
-
 class LoggerTests : public::testing::Test
 {
 public:
@@ -30,3 +28,17 @@ public:
 	{
 	}
 };
+
+TEST_F(LoggerTests, LogInfoTest)
+{
+	EXPECT_CALL(mockFileWriter, WriteLine(std::string("INFO: Test String")))
+		.Times(1);
+	logger->Log(LOGLEVEL_INFO, "Test String");
+}
+
+// TEST_F(LoggerTests, test)
+// {
+// 	MockFileWriter mock;
+// 	const char * stuff = "Stuff";
+// 	EXPECT_CALL(mock, Write(stuff)).Times(1);
+// }

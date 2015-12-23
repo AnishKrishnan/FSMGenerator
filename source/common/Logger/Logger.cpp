@@ -31,3 +31,28 @@ Logger::Logger(IFileWriter * pFileWriter, bool pTrace)
 	_writer = pFileWriter;
 	_fullTrace = pTrace;
 }
+
+void Logger::Log(LogLevel pLogLevel, const char * pLogData)
+{
+	if (pLogData == NULL)
+	{
+		throw std::runtime_error("Logger::Log - pLogData is null");
+	}
+
+	if (pLogLevel < 0 || pLogLevel > LOGLEVEL_COUNT)
+	{
+		throw std::runtime_error("Logger::Log - pLogLevel is out of valid range");
+	}
+
+	std::string logLevelString;
+
+	switch (pLogLevel)
+	{
+		case LOGLEVEL_INFO:
+			logLevelString = "INFO";
+		default:
+			break;
+	};
+
+	_writer->WriteLine(std::string(logLevelString + ":" + pLogData));
+}

@@ -9,6 +9,16 @@
 #include "stdexcept"
 #include "ConfigManager.h"
 #include "IFileWriter.h"
+
+typedef enum
+{
+	LOGLEVEL_ERROR,
+	LOGLEVEL_WARNING,
+	LOGLEVEL_INFO,
+	LOGLEVEL_COUNT
+
+} LogLevel;
+
 class Logger
 {
 
@@ -34,6 +44,14 @@ public:
 	 * @return pointer to the logger instance
 	 */
 	static Logger * GetInstance (IFileWriter * pFileWriter, bool pTrace = false);
+
+	/**
+	 * @brief Writes the log data to file with the given log level
+	 * 
+	 * @param pLogLevel severity level of the log
+	 * @param pLogData data to log
+	 */
+	void Log (LogLevel pLogLevel, const char * pLogData);
 };
 
 #endif //Logger_H

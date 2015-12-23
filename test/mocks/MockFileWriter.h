@@ -7,11 +7,7 @@
 class MockFileWriter : public IFileWriter
 {
 public:
-	 // MOCK_METHOD1(Write, void(const char * pData));
-
 	 MOCK_METHOD1(Write, void(const std::string & pData));
-	
-	 // MOCK_METHOD1(WriteLine, void(const char * pData));
 	
 	 MOCK_METHOD1(WriteLine, void(const std::string & pData));
 

@@ -1,16 +1,6 @@
-#include "FSMGeneratorException.h"
+#include "GenericBase.h"
 
-FSMGeneratorException::FSMGeneratorException() 
-	: std::runtime_error("")
+GenericBase::GenericBase (void)
 {
-}
-
-FSMGeneratorException::FSMGeneratorException(const char * pMessage)
-	: std::runtime_error(pMessage)
-{
-}
-
-FSMGeneratorException::FSMGeneratorException(const std::string & pMessage)
-	: std::runtime_error(pMessage)
-{
+	
 }

@@ -53,6 +53,12 @@ public:
 	 */
 	int GetConfigValueAsInt (const char * pConfigItemName);
 
+	/**
+	 * @brief deletes the instance of the config manager
+	 * @details sets the instance value to NULL
+	 */
+	void Delete (void);
+
 };
 
 #endif //ConfigManager_H

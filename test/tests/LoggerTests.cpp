@@ -22,6 +22,7 @@ public:
 
 	void TearDown()
 	{
+		logger->Delete();
 	}
 
 	~LoggerTests()
@@ -57,4 +58,3 @@ TEST_F(LoggerTests, LogFormattedString)
 
 	logger->Log(LOGLEVEL_INFO, "Test %s", "Formatted");
 }
-

@@ -30,6 +30,7 @@ public:
 
 	void TearDown(void)
 	{
+		delete exampleClass;
 	}
 
 	~GenericBaseTests()

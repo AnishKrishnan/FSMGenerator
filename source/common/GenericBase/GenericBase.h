@@ -20,6 +20,8 @@ private:
 public:
 
 	GenericBase (const char * pConfigFile);
+
+	~GenericBase (void);
 	
 };
 

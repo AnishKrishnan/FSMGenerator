@@ -67,6 +67,12 @@ public:
 	 * @param pLogFormat string format to use
 	 */
 	void Log (LogLevel pLogLevel, const char * pLogFormat, ...);
+
+	/**
+	 * @brief Deletes the logger instance. Sets the pointer to null
+	 * @details [long description]
+	 */
+	void Delete (void);
 };
 
 #endif //Logger_H

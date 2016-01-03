@@ -11,7 +11,7 @@ public:
 	{
 	public:
 		int testValue;
-		ExampleClass () : GenericBase()
+		ExampleClass () : GenericBase("../data/GenericBaseTestData/testConfig.config")
 		{
 			testValue = 1;
 		}

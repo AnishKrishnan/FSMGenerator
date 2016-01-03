@@ -1,6 +1,6 @@
 #include "GenericBase.h"
 
-GenericBase::GenericBase (void)
+GenericBase::GenericBase (const char * pConfigFile)
 {
-	
+
 }

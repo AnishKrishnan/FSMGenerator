@@ -7,5 +7,6 @@ include(${COMMON_DIR}/Logger/Logger.cmake)
 include(${COMMON_DIR}/ConfigManager/ConfigManager.cmake)
 include(${COMMON_DIR}/FSMGeneratorException/FSMGeneratorException.cmake)
 include(${COMMON_DIR}/StdOutFileWriter/StdOutFileWriter.cmake)
+include(${COMMON_DIR}/FileReader/FileReader.cmake)
 
 include(${SOURCE_DIR}/interfaces/interfaces.cmake)

@@ -9,6 +9,7 @@
 #include <string>
 #include <fstream>
 #include "IFileReader.h"
+#include "FSMGeneratorException.h"
 
 class FileReader : public IFileReader
 {

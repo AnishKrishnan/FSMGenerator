@@ -2,6 +2,10 @@
 
 FileReader::FileReader(const char * pFile)
 {
+	if (pFile == NULL)
+	{
+		throw FSMGeneratorException("FileReader::ctor - pFile is null");
+	}
 	_inStream.open(pFile);
 }
 

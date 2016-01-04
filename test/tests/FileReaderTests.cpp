@@ -3,7 +3,7 @@
 #include <gmock/gmock.h>
 #include "unistd.h"
 #include "iostream"
-
+#include "FSMGeneratorException.h"
 class FileReaderTests : public::testing::Test
 {
 public:
@@ -34,4 +34,19 @@ TEST_F(FileReaderTests, FileOpenOnConstructor)
 {
 	fileReader = new FileReader("../data/FileReaderTestData/simpleTestData.txt");
 	EXPECT_EQ(true, fileReader->IsOpen());
+}
+
+TEST_F(FileReaderTests, CheckFileNameIsNull)
+{
+	bool errorThrown = false;
+	try
+	{
+		fileReader = new FileReader(NULL);
+	}
+	catch (const FSMGeneratorException & err)
+	{
+		errorThrown = true;
+	}
+
+	EXPECT_EQ(true, errorThrown);
 }

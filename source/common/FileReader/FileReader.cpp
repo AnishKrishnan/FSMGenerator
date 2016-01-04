@@ -7,6 +7,11 @@ FileReader::FileReader(const char * pFile)
 		throw FSMGeneratorException("FileReader::ctor - pFile is null");
 	}
 	_inStream.open(pFile);
+
+	if (!this->IsOpen())
+	{
+		throw FSMGeneratorException("File could not be opened");
+	}
 }
 
 bool FileReader::IsOpen(void)

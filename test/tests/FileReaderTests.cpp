@@ -50,3 +50,18 @@ TEST_F(FileReaderTests, CheckFileNameIsNull)
 
 	EXPECT_EQ(true, errorThrown);
 }
+
+TEST_F(FileReaderTests, FailIfFileDoesNotExist)
+{
+	bool errorThrown = false;
+	try
+	{
+		fileReader = new FileReader("notARealFile.txt");
+	}
+	catch (const FSMGeneratorException & err)
+	{
+		errorThrown = true;
+	}
+
+	EXPECT_EQ(true, errorThrown);	
+}

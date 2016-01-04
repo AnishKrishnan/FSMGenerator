@@ -33,7 +33,7 @@ public:
 TEST_F(FileReaderTests, FileOpenOnConstructor)
 {
 	fileReader = new FileReader("../data/FileReaderTestData/simpleTestData.txt");
-	EXPECT_EQ(true, fileReader->IsOpen());
+	EXPECT_TRUE(fileReader->IsOpen());
 }
 
 TEST_F(FileReaderTests, CheckFileNameIsNull)
@@ -48,7 +48,7 @@ TEST_F(FileReaderTests, CheckFileNameIsNull)
 		errorThrown = true;
 	}
 
-	EXPECT_EQ(true, errorThrown);
+	EXPECT_TRUE(errorThrown);
 }
 
 TEST_F(FileReaderTests, FailIfFileDoesNotExist)
@@ -63,7 +63,7 @@ TEST_F(FileReaderTests, FailIfFileDoesNotExist)
 		errorThrown = true;
 	}
 
-	EXPECT_EQ(true, errorThrown);	
+	EXPECT_TRUE(errorThrown);	
 }
 
 TEST_F(FileReaderTests, CloseFile)
@@ -71,5 +71,5 @@ TEST_F(FileReaderTests, CloseFile)
 	fileReader = new FileReader("../data/FileReaderTestData/simpleTestData.txt");
 	fileReader->Close();
 
-	EXPECT_EQ(false, fileReader->IsOpen());
+	EXPECT_FALSE(fileReader->IsOpen());
 }

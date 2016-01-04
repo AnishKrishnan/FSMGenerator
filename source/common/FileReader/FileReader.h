@@ -8,6 +8,7 @@
 
 #include <string>
 #include <fstream>
+#include <stdlib.h>
 #include "IFileReader.h"
 #include "FSMGeneratorException.h"
 
@@ -36,6 +37,11 @@ public:
 	 * @brief Implementation of the IFileReader method
 	 */
 	virtual void Close (void);
+
+	/**
+	 * @brief Implementation of the IFileReader method
+	 */
+	virtual char * GetAllData (void);
 };
 
 #endif //FileReader_H

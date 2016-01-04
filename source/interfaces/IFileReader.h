@@ -21,6 +21,13 @@ public:
 	 * @brief Closes the open file
 	 */
 	virtual void Close (void) = 0;
+
+	/**
+	 * @brief Returns a char buffer to the all the contents of the file
+	 * 
+	 * @return pointer to the data buffer
+	 */
+	virtual char * GetAllData (void) = 0;
 };
 
 #endif //IFileReader_H

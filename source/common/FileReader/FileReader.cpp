@@ -24,3 +24,17 @@ void FileReader::Close(void)
 	_inStream.close();
 }
 
+char * FileReader::GetAllData(void)
+{
+	//get size of the file
+	_inStream.seekg(0, _inStream.end);
+	int size = _inStream.tellg();
+	_inStream.seekg(0, _inStream.beg);
+
+	char * buffer = (char *) calloc(size, sizeof(char));
+
+	//read data as block
+	_inStream.read(buffer, size);
+
+	return buffer;
+}

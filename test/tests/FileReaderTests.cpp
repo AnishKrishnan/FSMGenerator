@@ -73,3 +73,12 @@ TEST_F(FileReaderTests, CloseFile)
 
 	EXPECT_FALSE(fileReader->IsOpen());
 }
+
+TEST_F(FileReaderTests, ReadAllData)
+{
+	fileReader = new FileReader("../data/FileReaderTestData/simpleTestData.txt");
+
+	char * fileData = fileReader->GetAllData();
+
+	EXPECT_STREQ("Test Data", fileData);
+}

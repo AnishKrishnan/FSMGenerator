@@ -65,3 +65,11 @@ TEST_F(FileReaderTests, FailIfFileDoesNotExist)
 
 	EXPECT_EQ(true, errorThrown);	
 }
+
+TEST_F(FileReaderTests, CloseFile)
+{
+	fileReader = new FileReader("../data/FileReaderTestData/simpleTestData.txt");
+	fileReader->Close();
+
+	EXPECT_EQ(false, fileReader->IsOpen());
+}

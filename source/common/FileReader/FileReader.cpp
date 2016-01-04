@@ -19,3 +19,8 @@ bool FileReader::IsOpen(void)
 	return _inStream.is_open();
 }
 
+void FileReader::Close(void)
+{
+	_inStream.close();
+}
+

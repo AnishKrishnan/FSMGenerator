@@ -31,6 +31,11 @@ public:
 	 * @brief Implementation of the IFileReader method
 	 */
 	virtual bool IsOpen (void);
+
+	/**
+	 * @brief Implementation of the IFileReader method
+	 */
+	virtual void Close (void);
 };
 
 #endif //FileReader_H

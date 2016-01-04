@@ -16,7 +16,7 @@ public:
 
 	void SetUp(void)
 	{
-		fileReader = new FileReader("../data/FileReaderTestData/simpleTestData.txt");
+		fileReader = NULL;
 	}
 
 	void TearDown(void)
@@ -32,5 +32,6 @@ public:
 
 TEST_F(FileReaderTests, FileOpenOnConstructor)
 {
+	fileReader = new FileReader("../data/FileReaderTestData/simpleTestData.txt");
 	EXPECT_EQ(true, fileReader->IsOpen());
 }

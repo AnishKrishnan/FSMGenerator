@@ -19,7 +19,9 @@ private:
 
 public:
 
-	GenericBase ();
+	GenericBase (const char * pConfigFile);
+
+	~GenericBase (void);
 	
 };
 

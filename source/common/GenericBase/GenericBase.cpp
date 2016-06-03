@@ -1,16 +1,29 @@
-#include "FSMGeneratorException.h"
+#include "GenericBase.h"
 
-FSMGeneratorException::FSMGeneratorException() 
-	: std::runtime_error("")
+GenericBase::GenericBase (const char * pConfigFile)
 {
+	if (pConfigFile == NULL)
+	{
+		throw std::runtime_error("GenericBase::ctor - pConfigFile is null");
+	}
+
+	_configManager = ConfigManager::GetInstance(pConfigFile);
+
+	if (_configManager == NULL)
+	{
+		throw std::runtime_error("Could not instantiate config manager instance");
+	}
+
+	_logger = Logger::GetInstance(&_output, true);
+
+	if (_logger == NULL)
+	{
+		throw std::runtime_error("Could not instantiate logger instance");
+	}
 }
 
-FSMGeneratorException::FSMGeneratorException(const char * pMessage)
-	: std::runtime_error(pMessage)
+GenericBase::~GenericBase()
 {
-}
-
-FSMGeneratorException::FSMGeneratorException(const std::string & pMessage)
-	: std::runtime_error(pMessage)
-{
+	_logger->Delete();
+	_configManager->Delete();
 }

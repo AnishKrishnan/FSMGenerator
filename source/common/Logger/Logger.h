@@ -69,11 +69,10 @@ public:
 	void Log (LogLevel pLogLevel, const char * pLogFormat, ...);
 
 	/**
-	 * @brief Resets the singleton logger instance to null. 
-	 * @details Clears the memory used by the previous logger instance.
-	 * 
+	 * @brief Deletes the logger instance. Sets the pointer to null
+	 * @details [long description]
 	 */
-	void ResetLogger();
+	void Delete (void);
 };
 
 #endif //Logger_H

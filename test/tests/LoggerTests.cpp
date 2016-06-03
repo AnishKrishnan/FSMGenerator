@@ -22,7 +22,7 @@ public:
 
 	void TearDown()
 	{
-		logger->ResetLogger();
+		logger->Delete();
 	}
 
 	~LoggerTests()

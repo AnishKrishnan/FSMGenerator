@@ -91,9 +91,8 @@ void Logger::Log(LogLevel pLogLevel, const char * pLogFormat, ...)
 	va_end(args);
 }
 
-void Logger::ResetLogger()
+void Logger::Delete(void)
 {
 	delete _instance;
 	_instance = NULL;
 }
-

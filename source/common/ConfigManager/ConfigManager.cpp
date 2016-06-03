@@ -92,3 +92,9 @@ int ConfigManager::GetConfigValueAsInt(const char * pConfigItemName)
 
 	return atoi(configValue.c_str());
 }
+
+void ConfigManager::Delete(void)
+{
+	delete _instance;
+	_instance = NULL;
+}

@@ -67,6 +67,13 @@ public:
 	 * @param pLogFormat string format to use
 	 */
 	void Log (LogLevel pLogLevel, const char * pLogFormat, ...);
+
+	/**
+	 * @brief Resets the singleton logger instance to null. 
+	 * @details Clears the memory used by the previous logger instance.
+	 * 
+	 */
+	void ResetLogger();
 };
 
 #endif //Logger_H

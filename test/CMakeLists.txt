@@ -41,7 +41,6 @@ endif()
 # Libraries can be added to the LIBS variable
 # or manually included here.
 
-include(${BASE_LOCATION}/googletest.cmake)
 include(${BASE_LOCATION}/tests/tests.cmake)
 include(${BASE_LOCATION}/mocks/mocks.cmake)
 include(${PROJECT_SOURCE_DIR}/../source.cmake)
@@ -65,7 +64,7 @@ target_link_libraries(${TARGET} ${LIBS} ${GTEST_LIBRARIES} ${GMOCK_LIBRARIES} pt
 # target_link_libraries(${TARGET} ${LIBS} ${GTEST_LIBRARIES} pthread)
 
 add_custom_target(run
-	COMMAND runTests
+	COMMAND runTests -gmock_verbose=info
 	DEPENDS runTests
 	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 

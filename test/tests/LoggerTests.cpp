@@ -59,3 +59,9 @@ TEST_F(LoggerTests, LogFormattedString)
 	logger->Log(LOGLEVEL_INFO, "Test %s", "Formatted");
 }
 
+TEST_F(LoggerTests, ValidateSingletonBehaviour)
+{
+	Logger * log2 = Logger::GetInstance(&mockFileWriter, true);
+
+	EXPECT_EQ(log2, logger);
+}
